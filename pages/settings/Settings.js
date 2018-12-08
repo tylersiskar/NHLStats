@@ -8,14 +8,6 @@ class SettingsScreen extends React.Component {
 		title: 'Settings'
 	};
 
-  componentDidMount () {
-    this.props.navigation.setParams({
-      scrollToTop: () => {
-        alert('scroll to top');
-      }
-    });
-  }
-
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -26,10 +18,6 @@ class SettingsScreen extends React.Component {
           keyboardType="email-address"
           textContentType="username"
           style={{padding: 10}}
-          onChangeText={ (text) => {
-              console.log('text changed', text);
-            }
-          }
           blurOnSubmit={false}
           onSubmitEditing={() => { this.passwordInput.focus(); }}
         />
@@ -43,10 +31,6 @@ class SettingsScreen extends React.Component {
           }}
           textContentType="username"
           style={{padding: 10}}
-          onChangeText={ (text) => {
-              console.log('text changed', text);
-            }
-          }
         />
       </View>
     );

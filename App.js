@@ -48,10 +48,7 @@ const TabNavigator = createBottomTabNavigator({
   }),
   tabBarOptions: {
     activeTintColor: '#ff5400',
-    inactiveTintColor: 'gray',
-    tabBarOnPress: () => {
-      
-    }
+    inactiveTintColor: 'gray'
   }
 });
 
@@ -62,6 +59,7 @@ class App extends React.Component {
   render() {
     return <AppContainer />;
   }
+  
 }
 
 export default App;
