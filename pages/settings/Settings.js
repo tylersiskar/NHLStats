@@ -1,11 +1,20 @@
 import React from 'react';
 import { Text, View, TextInput } from 'react-native';
+import { createStackNavigator } from 'react-navigation';
 
-export class SettingsScreen extends React.Component {
+class SettingsScreen extends React.Component {
 
 	static navigationOptions = {
 		title: 'Settings'
 	};
+
+  componentDidMount () {
+    this.props.navigation.setParams({
+      scrollToTop: () => {
+        alert('scroll to top');
+      }
+    });
+  }
 
   render() {
     return (
@@ -43,3 +52,7 @@ export class SettingsScreen extends React.Component {
     );
   }
 }
+
+export const SettingsStack = createStackNavigator({
+  Settings: SettingsScreen
+});

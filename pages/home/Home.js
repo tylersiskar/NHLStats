@@ -23,6 +23,7 @@ export class HomeScreen extends React.Component {
 	}
 
 	async componentDidMount () {
+
 		let teams = [];
 		try {
 			let res = await fetch('https://statsapi.web.nhl.com/api/v1/teams');
@@ -32,6 +33,12 @@ export class HomeScreen extends React.Component {
 		} catch (e) {
 			console.log('some error!',e);
 		}
+
+		this.props.navigation.setParams({
+      scrollToTop: () => {
+        this.flatListElem.scrollToOffset({ x: 0, y: 0, animated: true })
+      }
+    });
 		
 	}
 
@@ -44,6 +51,9 @@ export class HomeScreen extends React.Component {
       <View style={HomeStyles.ContainerStyles}>
       	
         <FlatList
+        	ref={(el) => {
+        		this.flatListElem = el;
+        	}}
 				  data={this.state.teams}
 				  showsVerticalScrollIndicator={false}
 				  renderItem={
