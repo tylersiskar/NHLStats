@@ -1,4 +1,4 @@
-### NHLStats App
+# NHLStats App
 
 ## Dependencies
 * React Native CLI 2.0.1
