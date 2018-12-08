@@ -13,4 +13,8 @@
 * For iOS: `react-native run-ios`
 * For Android: `react-native run-android`
 
+### Troubleshooting
+* No bundle URL present
+	* `rm -r ios/build`
+
 _Please note that you will need to have Xcode and/or Android Studio installed to run these applications_
