@@ -39,28 +39,21 @@ export class HomeScreen extends React.Component {
 		this.props.navigation.navigate('Details', {team: team});
 	}
 
-	/*
-	<Button
-    onPress={this._goToDetails.bind(this)}
-    title="Go To Details!"
-  />
-	*/
-
   render() {
     return (
       <View style={HomeStyles.ContainerStyles}>
       	
         <FlatList
 				  data={this.state.teams}
+				  showsVerticalScrollIndicator={false}
 				  renderItem={
 				  	({item}) => { 
 				  		return <TouchableOpacity
-				  			 // style={styles.button}
+				  			 style={HomeStyles.ListItemStyles}
 				         onPress={this._goToDetails.bind(this, item)}
 				       >
-				         <Text> {item.name} </Text>
-				       </TouchableOpacity>
-				  		//return <Text>{item.name}</Text> 
+				       	<Text> {item.name} </Text>
+				      </TouchableOpacity>
 				  	} }
 				  keyExtractor={(item, index) => index.toString()}
 				/>

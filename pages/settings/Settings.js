@@ -1,5 +1,5 @@
 import React from 'react';
-import { Text, View } from 'react-native';
+import { Text, View, TextInput } from 'react-native';
 
 export class SettingsScreen extends React.Component {
 
@@ -11,6 +11,34 @@ export class SettingsScreen extends React.Component {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
         <Text>Settings!</Text>
+        <TextInput
+          placeholder="Enter your email!"
+          returnKeyType="next"
+          keyboardType="email-address"
+          textContentType="username"
+          style={{padding: 10}}
+          onChangeText={ (text) => {
+              console.log('text changed', text);
+            }
+          }
+          blurOnSubmit={false}
+          onSubmitEditing={() => { this.passwordInput.focus(); }}
+        />
+        <TextInput
+          placeholder="Enter your password!"
+          returnKeyType="done"
+          keyboardType="default"
+          secureTextEntry={true}
+          ref={(i) => {
+            this.passwordInput = i;
+          }}
+          textContentType="username"
+          style={{padding: 10}}
+          onChangeText={ (text) => {
+              console.log('text changed', text);
+            }
+          }
+        />
       </View>
     );
   }
