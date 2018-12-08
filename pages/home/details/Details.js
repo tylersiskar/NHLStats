@@ -25,7 +25,7 @@ export class DetailsScreen extends React.Component {
   render() {
     return (
       <View style={DetailsStyles.ContainerStyles}>
-        <Text>{this.state.team ? this.state.team.name : 'No Team Name'}</Text>
+        <Text style={DetailsStyles.TextStyles}>{this.state.team ? this.state.team.name : 'No Team Name'}</Text>
       </View>
     );
   }
