@@ -5,7 +5,10 @@ import {
 		Button,
 		Alert,
 		TouchableOpacity,
-		FlatList
+		FlatList,
+		Modal,
+		TouchableHighlight,
+		AsyncStorage
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 import { DetailsScreen } from './details/Details';
@@ -19,11 +22,24 @@ export class HomeScreen extends React.Component {
 
 	constructor (props) {
 		super(props);
-		this.state = { isLoading: true };
+		this.state = { isLoading: true, modalVisible: false };
 	}
 
 	async componentDidMount () {
 
+		//first let's check for login info
+		// let isLoggedIn;
+		// try {	
+		// 	isLoggedIn = await AsyncStorage.getItem('user:name');
+		// 	if(!isLoggedIn) {
+		// 		this.setState({modalVisible: true});
+		// 	}
+		// } catch (error) {
+  //    // Error retrieving data
+  //    console.error(error);
+  //  	}
+
+		//second we'll check for teams
 		let teams = [];
 		try {
 			let res = await fetch('https://statsapi.web.nhl.com/api/v1/teams');
@@ -40,6 +56,10 @@ export class HomeScreen extends React.Component {
       }
     });
 		
+	}
+
+	setModalVisibility (isVisible) {
+		this.setState({modalVisible: isVisible});
 	}
 
 	_goToDetails (team) {
@@ -67,6 +87,23 @@ export class HomeScreen extends React.Component {
 				  	} }
 				  keyExtractor={(item, index) => index.toString()}
 				/>
+				<Modal
+			    animationType="slide"
+			    transparent={false}
+			    visible={this.state.modalVisible}
+			    onRequestClose={() => {
+			      Alert.alert('Modal has been closed.');
+			    }}>
+			    <View style={HomeStyles.ContainerStyles}>
+			      <Text>Hello World!</Text>
+			      <TouchableHighlight
+			        onPress={() => {
+			          this.setModalVisibility(!this.state.modalVisible);
+			        }}>
+			        <Text>Hide Modal</Text>
+			      </TouchableHighlight>
+			    </View>
+			  </Modal>
       </View>
     );
   }
