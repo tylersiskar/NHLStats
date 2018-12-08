@@ -10,4 +10,5 @@
 ## To Run
 * For iOS: `react-native run-ios`
 * For Android: `react-native run-android`
+
 _Please note that you will need to have Xcode and/or Android Studio installed to run these applications_
