@@ -28,7 +28,7 @@ export class HomeScreen extends React.Component {
 	async componentDidMount () {
 
 		//first let's check for login info
-		// let isLoggedIn;
+		let isLoggedIn;
 		// try {	
 		// 	isLoggedIn = await AsyncStorage.getItem('user:name');
 		// 	if(!isLoggedIn) {
@@ -114,7 +114,7 @@ export const HomeStack = createStackNavigator({
   Details: DetailsScreen,
 });
 
-//to navigate 
+//to navigate without footer
 // HomeStack.navigationOptions = ({ navigation }) => {
 //   let tabBarVisible = true;
 //   if (navigation.state.index > 0) {

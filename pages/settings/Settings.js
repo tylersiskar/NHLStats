@@ -1,5 +1,11 @@
 import React from 'react';
-import { Text, View, TextInput } from 'react-native';
+import { Text, 
+         View, 
+         TextInput, 
+         StatusBar,
+         Switch,
+         Button } 
+from 'react-native';
 import { createStackNavigator } from 'react-navigation';
 
 class SettingsScreen extends React.Component {
@@ -8,6 +14,18 @@ class SettingsScreen extends React.Component {
 		title: 'Settings'
 	};
 
+  constructor (props) {
+    super(props);
+    this.state = { statusBarAnimation: 'slide' };
+  }
+
+  showOrHideStatusBar () {
+    let newState = !this.state.statusBarHidden || false;
+    this.setState({ statusBarHidden: newState });
+    StatusBar.setHidden(newState, this.state.statusBarAnimation);
+  }
+
+
   render() {
     return (
       <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
@@ -15,8 +33,10 @@ class SettingsScreen extends React.Component {
         <TextInput
           placeholder="Enter your email!"
           returnKeyType="next"
+          // autoFocus={true}
           keyboardType="email-address"
           textContentType="username"
+          selectionColor="red" //color of carat and selectorz
           style={{padding: 10}}
           blurOnSubmit={false}
           onSubmitEditing={() => { this.passwordInput.focus(); }}
@@ -32,6 +52,20 @@ class SettingsScreen extends React.Component {
           textContentType="username"
           style={{padding: 10}}
         />
+        <Text>Status bar will {this.state.statusBarAnimation}.</Text>
+        <Switch
+          value={this.state.statusBarAnimation === 'slide'}
+          onValueChange={() => {
+            if(this.state.statusBarAnimation === 'slide') {
+              this.setState({statusBarAnimation: 'fade'});
+            } else {
+              this.setState({statusBarAnimation: 'slide'});
+            }
+          }}
+        />
+        <Button 
+          title={'Show or hide the status bar'}
+          onPress={this.showOrHideStatusBar.bind(this)}/>
       </View>
     );
   }
