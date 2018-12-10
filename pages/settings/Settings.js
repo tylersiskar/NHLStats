@@ -52,7 +52,9 @@ class SettingsScreen extends React.Component {
           textContentType="username"
           style={{padding: 10}}
         />
-        <Text>Status bar will {this.state.statusBarAnimation}.</Text>
+        <Text
+        style={{'paddingTop': 50}}
+        >Status bar will {this.state.statusBarAnimation}.</Text>
         <Switch
           value={this.state.statusBarAnimation === 'slide'}
           onValueChange={() => {
@@ -64,7 +66,7 @@ class SettingsScreen extends React.Component {
           }}
         />
         <Button 
-          title={'Show or hide the status bar'}
+          title={(this.state.statusBarHidden ? 'Show' : 'Hide') + ' the status bar'}
           onPress={this.showOrHideStatusBar.bind(this)}/>
       </View>
     );
