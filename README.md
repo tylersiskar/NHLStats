@@ -4,7 +4,7 @@
 * React Native CLI 2.0.1
 
 ## To Install
-1. `sudo npm i -g react-native`
+1. `sudo npm i -g react-native-cli`
 2. `npm i`
 3. `react-native link react-native-gesture-handler`
 4. `react-native link react-native-vector-icons`
