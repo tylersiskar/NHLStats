@@ -48,7 +48,7 @@
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B565CB5EB6F54D7EB88D96F1 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA8D8100384546108906DABE /* libRNVectorIcons.a */; };
 		BE39B4EAB8594885B7A83083 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DDDE619038DE4EC49F8ADCA2 /* MaterialCommunityIcons.ttf */; };
-		C535F088EE954CD99BB15F2C /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5CF0868587AE4C80B2A2EB22 /* libRNGestureHandler.a */; };
+		D74609C122C116B300DD4624 /* libRNGestureHandler.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 542F1C7F21BC201B008F3FBE /* libRNGestureHandler.a */; };
 		D7E6F2E7415B47B1B38E060E /* Octicons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5886526CF16E4869A767B5AE /* Octicons.ttf */; };
 		D996C58030E44871ADD4457F /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3421B80ECA9341C6BAC8C990 /* Entypo.ttf */; };
 		DE8D8E21E67145ECBFFC9118 /* FontAwesome5_Brands.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9FC05B012195473485683AB0 /* FontAwesome5_Brands.ttf */; };
@@ -353,6 +353,13 @@
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
 		};
+		D74609BF22C116B300DD4624 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 44757FDDE4354284A85A58F0 /* RNGestureHandler.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B5C32A36220C603B000FFB8D;
+			remoteInfo = "RNGestureHandler-tvOS";
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -417,6 +424,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D74609C122C116B300DD4624 /* libRNGestureHandler.a in Frameworks */,
 				ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */,
 				11D1A2F320CAFA9E000508D9 /* libRCTAnimation.a in Frameworks */,
 				146834051AC3E58100842450 /* libReact.a in Frameworks */,
@@ -429,7 +437,6 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				C535F088EE954CD99BB15F2C /* libRNGestureHandler.a in Frameworks */,
 				B565CB5EB6F54D7EB88D96F1 /* libRNVectorIcons.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -608,6 +615,7 @@
 			isa = PBXGroup;
 			children = (
 				542F1C7F21BC201B008F3FBE /* libRNGestureHandler.a */,
+				D74609C022C116B300DD4624 /* libRNGestureHandler-tvOS.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -822,6 +830,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -1175,6 +1184,13 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		D74609C022C116B300DD4624 /* libRNGestureHandler-tvOS.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libRNGestureHandler-tvOS.a";
+			remoteRef = D74609BF22C116B300DD4624 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 /* End PBXReferenceProxy section */

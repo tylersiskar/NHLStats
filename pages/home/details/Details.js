@@ -17,10 +17,13 @@ export class DetailsScreen extends React.Component {
 
   constructor(props) {
     super(props);
+
     let team = this.props.navigation.getParam('team', {name: 'No Team'});
+
     this.state = {
       team: team,
-      scrollY: new Animated.Value(0)
+      scrollY: new Animated.Value(0),
+      stats: []
     };
   }
 
@@ -31,7 +34,24 @@ export class DetailsScreen extends React.Component {
     };
   };
 
-  componentDidMount () {
+
+  async componentDidMount () {
+
+    
+    
+
+    //put fetch here
+    let stats = [];
+    try {
+      let res = await fetch('https://statsapi.web.nhl.com/api/v1/teams/' + this.state.team.id + '/stats');
+      let json  = await res.json();
+      stats = json.stats;
+      this.setState({stats: stats});
+      console.log('check', stats);
+    } catch (e) {
+      console.log('some error!',e);
+    }
+
     this.props.navigation.setParams({
       scrollToTop: () => {
         this.flatListElem.scrollToOffset({ x: 0, y: 0, animated: true })
@@ -40,13 +60,41 @@ export class DetailsScreen extends React.Component {
   }
 
   _renderScrollViewContent() {
-    const data = Array.from({length: 30});
     return (
       <View style={DetailsStyles.scrollViewContent}>
-        {data.map((_, i) =>
-          <View key={i} style={DetailsStyles.row}>
-            <Text>{i+1}</Text>
-          </View>
+        {this.state.stats && this.state.stats.map((stat, index) => {
+          console.log('stat', stat);
+          let inputs = Object.keys(stat.splits[0].stat);
+          let result = Object.values(stat.splits[0].stat);
+          let wins = stat && 
+                            stat.splits && 
+                            stat.splits[0] && 
+                            stat.splits[0].stat &&
+                            stat.splits[0].stat.wins ? 
+                            stat.splits[0].stat.wins :
+                            'No Data';
+          let points = stat && 
+                            stat.splits && 
+                            stat.splits[0] && 
+                            stat.splits[0].stat &&
+                            stat.splits[0].stat.pts ? 
+                            stat.splits[0].stat.pts :
+                            'No Data';
+          let data = stat && 
+                            stat.splits && 
+                            stat.splits[0] && 
+                            stat.splits[0].stat ?
+                            stat.splits[0].stat :
+                            'N/A';   
+                    
+          return (
+            <View key={index} style={DetailsStyles.row}>
+              <Text>{inputs[index] + ': ' + result[index]}</Text>  
+              <Text>{ 'Wins: '+  wins} </Text>
+              <Text>{'Pts: ' + points}</Text>
+            </View>
+          );
+        }
         )}
       </View>
     );
