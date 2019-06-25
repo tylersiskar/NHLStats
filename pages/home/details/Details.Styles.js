@@ -13,7 +13,7 @@ export const DetailsStyles = StyleSheet.create({
   row: {
     height: 40,
     margin: 16,
-    backgroundColor: '#D3D3D3',
+    backgroundColor: 'gold',
     alignItems: 'center',
     justifyContent: 'center',
   },

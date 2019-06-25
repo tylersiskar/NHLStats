@@ -46,6 +46,7 @@ export class HomeScreen extends React.Component {
 			let json 	= await res.json();
 			teams = json.teams;
 			this.setState({teams: teams});
+			console.log('checkteam', teams);
 		} catch (e) {
 			console.log('some error!',e);
 		}

@@ -8,7 +8,8 @@ import {
     Animated
 } from 'react-native';
 import { DetailsStyles } from './Details.Styles';
-
+import logo1 from './img/Penguins.png';
+import logo2 from './img/Bruins.png';
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
@@ -19,11 +20,53 @@ export class DetailsScreen extends React.Component {
     super(props);
 
     let team = this.props.navigation.getParam('team', {name: 'No Team'});
+    console.log('ty', team);
+
+    // New pic
+
+    var str = team.name;
+    var picture = logo1;
+    console.log('wh', str);
+    var logo = str.split(' ');
+    console.log('l', logo);
+    var yes = logo[1];
+    var ye = yes.trim(); 
+    var link = './img/';
+    var link2 = '.png';
+    var linktota = link.concat(ye, link2);
+    var linktotal = linktota.toString();
+    console.log('words', linktotal);
+    console.log('words1', logo1);
+    // if(linktotal === logo1){
+    //   console.log('case1', logo1);
+    //   picture = logo1
+    // } else if (linktotal === logo2){
+    //   picture = logo2
+    // }
+    // else{
+    //   picture = './img/Sabres.png'
+    // }
+
+
+    // switch(true) {
+    //   case linktotal === logo1:
+    //     picture = logo1;
+    //     console.log('switch', picture);
+    //     break;
+    //   case linktotal === logo2:
+    //     picture = logo2;
+    //   default:
+    //     picture = './img/Sabres.png';
+    //   break;
+    // }
+    
+    //var link = './img/' + ye + '.png';
 
     this.state = {
       team: team,
       scrollY: new Animated.Value(0),
-      stats: []
+      stats: [],
+      photo: picture
     };
   }
 
@@ -37,8 +80,6 @@ export class DetailsScreen extends React.Component {
 
   async componentDidMount () {
 
-    
-    
 
     //put fetch here
     let stats = [];
@@ -58,7 +99,7 @@ export class DetailsScreen extends React.Component {
       }
     });
   }
-
+  
   _renderScrollViewContent() {
     return (
       <View style={DetailsStyles.scrollViewContent}>
@@ -86,9 +127,10 @@ export class DetailsScreen extends React.Component {
                             stat.splits[0].stat ?
                             stat.splits[0].stat :
                             'N/A';   
-                    
+                   
           return (
             <View key={index} style={DetailsStyles.row}>
+              
               <Text>{inputs[index] + ': ' + result[index]}</Text>  
               <Text>{ 'Wins: '+  wins} </Text>
               <Text>{'Pts: ' + points}</Text>
@@ -119,6 +161,7 @@ export class DetailsScreen extends React.Component {
       outputRange: [1.125, 1, 1],
       // extrapolate: 'clamp'
     });
+    
 
     return (
       <View style={DetailsStyles.fill}>
@@ -150,7 +193,9 @@ export class DetailsScreen extends React.Component {
                 {scaleX: imageScale}
               ]},
             ]}
-            source={require('./img/sabres.png')}
+
+            source={this.state.photo}
+
           />
           <View style={DetailsStyles.bar}>
           </View>
