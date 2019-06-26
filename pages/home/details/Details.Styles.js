@@ -1,21 +1,39 @@
 import { StyleSheet } from 'react-native';
-
+ 
 const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = 140;
 
 export const DetailsStyles = StyleSheet.create({
-	ContainerStyles: { flex: 1, justifyContent: 'center', alignItems: 'center' },
+	ContainerStyles: { 
+		flex: 1,
+	  flexDirection: 'row',
+	  flexWrap: 'wrap',
+	  alignItems: 'flex-start',
+	  justifyContent: 'space-between',
+	},
 	TextStyles: { color: 'green' },
 	fill: {
     flex: 1,
   },
+  // flex: {
+  // 	width: '100%',
+  // 	backgroundColor: 'gold',
+  //   alignItems: 'center',
+  //   justifyContent: 'center',
+    
+  // },
+  flexItem: {
+  	flexGrow: 1,
+  	flexBasis: 100,
+  	backgroundColor: 'green'
+  },
   row: {
-    height: 40,
-    margin: 16,
+
+  	/*width: '50%',*/
+    flexGrow: 1,
     backgroundColor: 'gold',
-    alignItems: 'center',
-    justifyContent: 'center',
+		flexBasis: 100,
   },
   header: {
 	  position: 'absolute',

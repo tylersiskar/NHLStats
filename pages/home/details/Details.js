@@ -1,4 +1,5 @@
 import React from 'react';
+import styled     from 'styled-components/native';
 import { 
     Text, 
     View, 
@@ -14,6 +15,21 @@ const HEADER_MAX_HEIGHT = 200;
 const HEADER_MIN_HEIGHT = 60;
 const HEADER_SCROLL_DISTANCE = HEADER_MAX_HEIGHT - HEADER_MIN_HEIGHT;
 
+// padding-top: ${ ({firstChild, noPadding}) => (firstChild && !noPadding) ? Constants.defaultPaddingTop : 0 }px;
+//     padding-right: ${ ({noPadding}) => noPadding ?  0 : Constants.defaultPadding }px;
+//     padding-bottom: ${ ({lastChild, noPadding}) => (lastChild || noPadding) ? 0 : Constants.defaultPaddingBottom}px;
+//     padding-left: ${ ({noPadding}) => noPadding ?  0 : Constants.defaultPadding }px;
+
+const FlexWrapper = styled.View`
+    display: flex;
+    justify-content: space-around;
+    background-color: blue;
+    flex-direction: row;
+    align-items: stretch;
+    flex-grow: 1;
+`;
+
+
 export class DetailsScreen extends React.Component {
 
   constructor(props) {
@@ -26,39 +42,39 @@ export class DetailsScreen extends React.Component {
 
     var str = team.name;
     var picture = logo1;
-    console.log('wh', str);
+    console.log('wh', picture);
     var logo = str.split(' ');
     console.log('l', logo);
     var yes = logo[1];
     var ye = yes.trim(); 
     var link = './img/';
     var link2 = '.png';
-    var linktota = link.concat(ye, link2);
-    var linktotal = linktota.toString();
+    var linktotal = link.concat(ye, link2);
+    
     console.log('words', linktotal);
-    console.log('words1', logo1);
-    // if(linktotal === logo1){
-    //   console.log('case1', logo1);
-    //   picture = logo1
-    // } else if (linktotal === logo2){
-    //   picture = logo2
-    // }
-    // else{
-    //   picture = './img/Sabres.png'
-    // }
+    console.log('words1', picture);
+    if(linktotal === logo1){
+      picture = logo1
+    } else if (linktotal === logo2){
+      picture = logo2
+    }
+    else{
+      picture = './img/Sabres.png'
+    }
 
 
-    // switch(true) {
-    //   case linktotal === logo1:
-    //     picture = logo1;
-    //     console.log('switch', picture);
-    //     break;
-    //   case linktotal === logo2:
-    //     picture = logo2;
-    //   default:
-    //     picture = './img/Sabres.png';
-    //   break;
-    // }
+    switch(linktotal) {
+
+      case linktotal === './img/Penguins.png':
+        picture = './img/Penguins.png';
+        
+        break;
+      case linktotal === './img/Bruins.png':
+        picture = './img/Bruins.png';
+      default:
+        picture = './img/Sabres.png';
+      break;
+    }
     
     //var link = './img/' + ye + '.png';
 
@@ -66,7 +82,7 @@ export class DetailsScreen extends React.Component {
       team: team,
       scrollY: new Animated.Value(0),
       stats: [],
-      photo: picture
+      photo: linktotal
     };
   }
 
@@ -102,43 +118,75 @@ export class DetailsScreen extends React.Component {
   
   _renderScrollViewContent() {
     return (
-      <View style={DetailsStyles.scrollViewContent}>
-        {this.state.stats && this.state.stats.map((stat, index) => {
-          console.log('stat', stat);
-          let inputs = Object.keys(stat.splits[0].stat);
-          let result = Object.values(stat.splits[0].stat);
-          let wins = stat && 
-                            stat.splits && 
-                            stat.splits[0] && 
-                            stat.splits[0].stat &&
-                            stat.splits[0].stat.wins ? 
-                            stat.splits[0].stat.wins :
-                            'No Data';
-          let points = stat && 
-                            stat.splits && 
-                            stat.splits[0] && 
-                            stat.splits[0].stat &&
-                            stat.splits[0].stat.pts ? 
-                            stat.splits[0].stat.pts :
-                            'No Data';
-          let data = stat && 
-                            stat.splits && 
-                            stat.splits[0] && 
-                            stat.splits[0].stat ?
-                            stat.splits[0].stat :
-                            'N/A';   
-                   
-          return (
-            <View key={index} style={DetailsStyles.row}>
+    
+        <FlexWrapper style={DetailsStyles.scrollViewContent}>
+
+          {this.state.stats && this.state.stats.map((stat, index) => {
+            console.log('stat', stat);
+            let inputs = Object.keys(stat.splits[0].stat);
+            let result = Object.values(stat.splits[0].stat);
+            let wins = stat && 
+                              stat.splits && 
+                              stat.splits[0] && 
+                              stat.splits[0].stat &&
+                              stat.splits[0].stat.wins ? 
+                              stat.splits[0].stat.wins :
+                              'No Data';
+            let loss = stat && 
+                              stat.splits && 
+                              stat.splits[0] && 
+                              stat.splits[0].stat &&
+                              stat.splits[0].stat.losses ? 
+                              stat.splits[0].stat.losses :
+                              'No Data';
+            let ot = stat && 
+                              stat.splits && 
+                              stat.splits[0] && 
+                              stat.splits[0].stat &&
+                              stat.splits[0].stat.ot ? 
+                              stat.splits[0].stat.ot :
+                              'No Data';
+            let points = stat && 
+                              stat.splits && 
+                              stat.splits[0] && 
+                              stat.splits[0].stat &&
+                              stat.splits[0].stat.pts ? 
+                              stat.splits[0].stat.pts :
+                              'No Data';
+            let data = stat && 
+                              stat.splits && 
+                              stat.splits[0] && 
+                              stat.splits[0].stat ?
+                              stat.splits[0].stat :
+                              'N/A';   
+            console.log('a',Object.keys(data).length);
+
+   /*         //for (var i = 0; i < Object.keys(data).length; i++) {
+              <View key={index} style={DetailsStyles.row}>
+              <Text>{'dfhagafdsgsa'}</Text>
+
+                </View>   
+              //  }*/         
+            return (
+              /*style={DetailsStyles.ContainerStyles}*/
+              /*style={DetailsStyles.flexItem}*/
               
-              <Text>{inputs[index] + ': ' + result[index]}</Text>  
-              <Text>{ 'Wins: '+  wins} </Text>
-              <Text>{'Pts: ' + points}</Text>
-            </View>
-          );
-        }
-        )}
-      </View>
+                <View key={index} style={DetailsStyles.flexItem}>
+                 
+                  
+                  <Text>{'Wins: ' + wins}</Text>
+                   <Text>{'Losses: ' + loss}</Text>
+                    <Text>{'OTL: ' + ot}</Text>
+                     <Text>{'Points: ' + points}</Text>
+                  
+                
+                </View>
+              
+            
+            );
+          
+          })}
+      </FlexWrapper>
     );
   }
 
@@ -194,7 +242,7 @@ export class DetailsScreen extends React.Component {
               ]},
             ]}
 
-            source={this.state.photo}
+            source={require('./img/Jose.png')}
 
           />
           <View style={DetailsStyles.bar}>
