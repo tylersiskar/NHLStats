@@ -29,8 +29,6 @@ export const DetailsStyles = StyleSheet.create({
   	backgroundColor: 'green'
   },
   row: {
-
-  	/*width: '50%',*/
     flexGrow: 1,
     backgroundColor: 'gold',
 		flexBasis: 100,

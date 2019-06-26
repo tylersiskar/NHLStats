@@ -42,6 +42,7 @@ export class DetailsScreen extends React.Component {
 
     var str = team.name;
     var picture = logo1;
+    
     console.log('wh', picture);
     var logo = str.split(' ');
     console.log('l', logo);
@@ -53,28 +54,28 @@ export class DetailsScreen extends React.Component {
     
     console.log('words', linktotal);
     console.log('words1', picture);
-    if(linktotal === logo1){
-      picture = logo1
-    } else if (linktotal === logo2){
-      picture = logo2
-    }
-    else{
-      picture = './img/Sabres.png'
-    }
+    // if(linktotal === logo1){
+    //   picture = logo1
+    // } else if (linktotal === logo2){
+    //   picture = logo2
+    // }
+    // else{
+    //   picture = './img/Sabres.png'
+    // }
 
 
-    switch(linktotal) {
+    // switch(linktotal) {
 
-      case linktotal === './img/Penguins.png':
-        picture = './img/Penguins.png';
+    //   case linktotal === './img/Penguins.png':
+    //     picture = './img/Penguins.png';
         
-        break;
-      case linktotal === './img/Bruins.png':
-        picture = './img/Bruins.png';
-      default:
-        picture = './img/Sabres.png';
-      break;
-    }
+    //     break;
+    //   case linktotal === './img/Bruins.png':
+    //     picture = './img/Bruins.png';
+    //   default:
+    //     picture = './img/Sabres.png';
+    //   break;
+    // }
     
     //var link = './img/' + ye + '.png';
 
@@ -161,12 +162,6 @@ export class DetailsScreen extends React.Component {
                               'N/A';   
             console.log('a',Object.keys(data).length);
 
-   /*         //for (var i = 0; i < Object.keys(data).length; i++) {
-              <View key={index} style={DetailsStyles.row}>
-              <Text>{'dfhagafdsgsa'}</Text>
-
-                </View>   
-              //  }*/         
             return (
               /*style={DetailsStyles.ContainerStyles}*/
               /*style={DetailsStyles.flexItem}*/
@@ -241,7 +236,6 @@ export class DetailsScreen extends React.Component {
                 {scaleX: imageScale}
               ]},
             ]}
-
             source={require('./img/Jose.png')}
 
           />
