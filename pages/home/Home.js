@@ -8,6 +8,7 @@ import {
 		FlatList,
 		Modal,
 		TouchableHighlight,
+		Image,
 		AsyncStorage
 } from 'react-native';
 import { createStackNavigator } from 'react-navigation';
@@ -70,7 +71,7 @@ export class HomeScreen extends React.Component {
   render() {
     return (
       <View style={HomeStyles.ContainerStyles}>
-      	
+
         <FlatList
         	ref={(el) => {
         		this.flatListElem = el;
@@ -83,6 +84,10 @@ export class HomeScreen extends React.Component {
 				  			 style={HomeStyles.ListItemStyles}
 				         onPress={this._goToDetails.bind(this, item)}
 				       >
+				     <Image
+      				style = {{alignItems: 'flex-start'}}
+      				source = {require('./NHL.png')}
+      				/>
 				       	<Text> {item.name} </Text>
 				      </TouchableOpacity>
 				  	} }

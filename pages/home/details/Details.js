@@ -236,7 +236,7 @@ export class DetailsScreen extends React.Component {
                 {scaleX: imageScale}
               ]},
             ]}
-            source={require('./img/Jose.png')}
+            source={require('./img/Sabres.png')}
 
           />
           <View style={DetailsStyles.bar}>
